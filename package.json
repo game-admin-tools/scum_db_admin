@@ -12,6 +12,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "electron-updater": "^6.6.2",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
@@ -33,10 +34,21 @@
     "vite": "^7.2.4",
     "wait-on": "^9.0.3"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/game-admin-tools/scum_db_admin.git"
+  },
   "build": {
     "appId": "com.sda.app",
     "productName": "SCUM DB Admin",
     "icon": "public/icon.png",
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "game-admin-tools",
+        "repo": "scum_db_admin"
+      }
+    ],
     "directories": {
       "output": "dist_build"
     },
