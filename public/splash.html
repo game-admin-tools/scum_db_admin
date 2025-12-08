@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDA Loading</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #2b3a28; /* Dark Earth Green base */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #d0e8d0; /* Light greenish white */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            -webkit-app-region: drag;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #556B2F; /* Matte Earth Green */
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: 40px;
+        }
+
+        .loader {
+            width: 200px;
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .loader-bar {
+            height: 100%;
+            background-color: #556B2F;
+            width: 50%;
+            animation: load 2s infinite ease-in-out;
+            border-radius: 2px;
+        }
+
+        @keyframes load {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(200%); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">SDA</div>
+        <div class="subtitle">Scum DB Admin</div>
+        <div class="loader">
+            <div class="loader-bar"></div>
+        </div>
+    </div>
+</body>
+</html>

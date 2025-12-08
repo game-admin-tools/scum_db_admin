@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "NodeNext", // Use NodeNext/ESNext for main process if type: module in package.json
+        "moduleResolution": "NodeNext",
+        "outDir": "../dist-electron",
+        "rootDir": ".",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true
+    },
+    "include": [
+        "."
+    ]
+}
