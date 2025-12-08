@@ -80,11 +80,7 @@ This project expects all JS execution and builds to run inside Docker.
 
 **Production Build**:
 ```powershell
-powershell -ExecutionPolicy Bypass -File .\build-windows.ps1
-```
-Or directly via Docker:
-```powershell
-docker run --rm -v "${PWD}:/project" -w /project electronuserland/builder:wine /bin/bash -c "npm install && npm run build -- --win"
+docker run --rm -v "${PWD}:/project" -w /project electronuserland/builder:wine rm -rf dist_build; powershell -ExecutionPolicy Bypass -File .\build-windows.ps1
 ```
 
 **Development**:

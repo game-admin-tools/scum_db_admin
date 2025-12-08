@@ -36,6 +36,7 @@
   "build": {
     "appId": "com.sda.app",
     "productName": "SCUM DB Admin",
+    "icon": "public/icon.png",
     "directories": {
       "output": "dist_build"
     },
