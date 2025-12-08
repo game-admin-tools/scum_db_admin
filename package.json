@@ -42,11 +42,20 @@
     "files": [
       "dist/**/*",
       "dist-electron/**/*",
-      "package.json",
-      "electron/preload.js"
+      "package.json"
     ],
     "win": {
-      "target": "nsis"
+      "target": "nsis",
+      "extraFiles": [
+        {
+          "from": "node_modules/electron/dist/chrome_100_percent.pak",
+          "to": "."
+        },
+        {
+          "from": "node_modules/electron/dist/chrome_200_percent.pak",
+          "to": "."
+        }
+      ]
     }
   }
 }

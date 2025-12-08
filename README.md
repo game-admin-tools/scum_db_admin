@@ -71,3 +71,37 @@ export default defineConfig([
   },
 ])
 ```
+
+## Building and Running with Docker
+
+This project expects all JS execution and builds to run inside Docker.
+
+### Windows
+
+**Production Build**:
+```powershell
+powershell -ExecutionPolicy Bypass -File .\build-windows.ps1
+```
+Or directly via Docker:
+```powershell
+docker run --rm -v "${PWD}:/project" -w /project electronuserland/builder:wine /bin/bash -c "npm install && npm run build -- --win"
+```
+
+**Development**:
+```powershell
+docker run -it --rm -v "${PWD}:/project" -w /project -p 5173:5173 electronuserland/builder:wine /bin/bash -c "npm install && npm run dev"
+```
+*Note: GUI applications may require X11 forwarding setup on Windows to view the window during development.*
+
+### Linux
+
+**Production Build**:
+```bash
+docker run --rm -it -v "${PWD}:/app" -w /app node:lts npm run build -- --linux
+```
+
+**Development**:
+```bash
+docker run --rm -it -v "${PWD}:/app" -w /app -p 5173:5173 node:lts npm run dev
+```
+

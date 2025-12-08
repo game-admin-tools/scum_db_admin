@@ -40,10 +40,13 @@ function createMainWindow() {
         height: 800,
         show: false, // Hidden initially, shown after splash
         backgroundColor: '#2e2e2e',
+        title: 'SDA - SCUM DB Admin',
+        autoHideMenuBar: true,
         webPreferences: {
             preload: path.join(__dirname, 'preload.js'),
             nodeIntegration: false,
             contextIsolation: true,
+            sandbox: false, // Disable sandbox to ensure preload works in all envs
         },
     });
 
@@ -52,10 +55,14 @@ function createMainWindow() {
 
     if (isDev) {
         mainWindow.loadURL(devUrl);
-        // mainWindow.webContents.openDevTools();
     } else {
         mainWindow.loadFile(prodPath);
     }
+
+    mainWindow.setMenu(null); // Hide menu bar completely
+
+    // Always open devtools for debugging the white screen issue
+    // mainWindow.webContents.openDevTools();
 
     mainWindow.on('closed', () => {
         mainWindow = null;
@@ -66,8 +73,14 @@ app.whenReady().then(() => {
     createSplashWindow();
     createMainWindow();
 
-    // If we wanted to wait for the main window to be ready before closing splash:
-    // But here we rely on the React app sending a 'app-ready' signal
+    // Safety timeout: If React fails to load within 10 seconds, close splash and show main window (to see errors)
+    setTimeout(() => {
+        if (splashWindow && !splashWindow.isDestroyed()) {
+            console.log('Safety timeout: Forcing splash close');
+            splashWindow.close();
+            if (mainWindow) mainWindow.show();
+        }
+    }, 10000);
 });
 
 ipcMain.on('app-ready', () => {
