@@ -85,7 +85,9 @@ function closeSplashAndShowMain() {
         mainWindow.show();
     } else {
         createMainWindow();
-        mainWindow?.show();
+        if (mainWindow) {
+            (mainWindow as BrowserWindow).show();
+        }
     }
 }
 
