@@ -63,7 +63,7 @@ function App() {
       {/* Main Content */}
       <main style={{ flex: 1, padding: '40px', overflowY: 'auto' }}>
         <header style={{ marginBottom: '40px' }}>
-          <h1 style={{ margin: 0 }}>Dashboard</h1>
+          <h1 style={{ margin: 0 }}>Dashboard (Test)</h1>
           <p style={{ color: 'var(--text-secondary)' }}>Welcome to SCUM DB Admin.</p>
         </header>
 
